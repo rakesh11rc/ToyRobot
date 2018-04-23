@@ -9,7 +9,8 @@ public enum RobotStatus {
     NOT_AVAILABLE("Robot is not avaiable"),
     DIRECTION_CHANGED("Robot direction is changed"),
     INVALID_POSITION("Robot position is invalid"),
-    INVALID_DIRECTION("Invalid direction provided");
+    INVALID_DIRECTION("Invalid direction provided"),
+    REMOVED("Robot is removed from table");
 
     private String status;
 

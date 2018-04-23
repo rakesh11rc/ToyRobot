@@ -38,8 +38,10 @@ public class RobotActionApiController extends RobotActionApi {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Action");
 
         }
-        if(robotAction.equals(RobotAction.MOVE)) {
+        if (robotAction.equals(RobotAction.MOVE)) {
             return ResponseEntity.ok(actionService.moveRobot().toString());
+        } else if (robotAction.equals(RobotAction.REMOVE)) {
+            return ResponseEntity.ok(actionService.removeRobot().toString());
         } else {
             return ResponseEntity.ok(actionService.setDirection(robotAction).toString());
         }
@@ -49,7 +51,7 @@ public class RobotActionApiController extends RobotActionApi {
     @Override
     public ResponseEntity getRobot() {
         ToyRobot toyRobot = actionService.getToyRobot();
-        if(Objects.isNull(toyRobot)) {
+        if (Objects.isNull(toyRobot)) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Missing Robot");
         }
         return ResponseEntity.ok(actionService.getToyRobot());

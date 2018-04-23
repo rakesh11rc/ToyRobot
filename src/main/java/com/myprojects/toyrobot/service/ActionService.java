@@ -73,6 +73,14 @@ public class ActionService {
         return toyRobot;
     }
 
+    public RobotStatus removeRobot() {
+        if(Objects.isNull(toyRobot)) {
+            return RobotStatus.NOT_AVAILABLE;
+        }
+        toyRobot = null;
+        return RobotStatus.REMOVED;
+    }
+
     private boolean checkPosition(int xValue, int yValue) {
         if(xValue < TableBoundary.X_MIN.getBoundaryValue() || xValue > TableBoundary.X_MAX.getBoundaryValue()) {
             return false;
@@ -97,6 +105,7 @@ public class ActionService {
                 } else {
                      yValue += 1;
                     toyRobot.setyValue(yValue);
+                    break;
                 }
             case SOUTH:
                 int yMin = TableBoundary.Y_MIN.getBoundaryValue();
@@ -105,6 +114,7 @@ public class ActionService {
                 } else {
                     yValue -= 1;
                     toyRobot.setyValue(yValue);
+                    break;
                 }
             case EAST:
                 int xMax = TableBoundary.X_MAX.getBoundaryValue();
@@ -113,6 +123,7 @@ public class ActionService {
                 } else {
                     xValue += 1;
                     toyRobot.setxValue(xValue);
+                    break;
                 }
             case WEST:
                 int xMin = TableBoundary.X_MIN.getBoundaryValue();
@@ -121,6 +132,7 @@ public class ActionService {
                 } else {
                     xValue -= 1;
                     toyRobot.setxValue(xValue);
+                    break;
                 }
         }
         return true;
